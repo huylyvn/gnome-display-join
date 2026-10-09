@@ -1,0 +1,14 @@
+#!/bin/bash
+
+{
+    echo "=== $(date) ==="
+    echo "DISPLAY=$DISPLAY"
+    echo "WAYLAND_DISPLAY=$WAYLAND_DISPLAY"
+    echo "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
+
+    /usr/bin/gdctl set --persistent \
+      --logical-monitor --primary --monitor eDP-1 --scale 1 \
+      --logical-monitor --monitor HDMI-1 --right-of eDP-1 --scale 2
+
+    echo "exit=$?"
+} >> /tmp/display-join.log 2>&1
